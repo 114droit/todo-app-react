@@ -3,7 +3,9 @@ import {create} from 'zustand';
 const useTodoStore = create((set) => ({
     todos: [],
     newTodo: '',
+
     setNewTodo: (value) => set({ newTodo: value }),
+
     addTodo: (event) => 
         event.preventDefault() ||
         set((state) => {
@@ -18,7 +20,10 @@ const useTodoStore = create((set) => ({
                 alert('Please enter a todo');
                 return state;
             }
-    })
+    }),
+
+    deleteTodo: (id) => set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
+
 }));
 
 export default useTodoStore;
