@@ -26,6 +26,7 @@ const useTodoStore = create((set) => ({
 
     toggleTodo: (id) => set((state) => ({ todos: state.todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo) })),
 
+    editTodo: (id) => set((state) => ({ todos: state.todos.map((todo) => todo.id === id ? { ...todo, text: prompt('Edit Todo', "New Todo")} : todo) }))
 }));
 
 export default useTodoStore;
