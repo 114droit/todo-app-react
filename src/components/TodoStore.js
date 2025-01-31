@@ -4,7 +4,7 @@ const useTodoStore = create((set) => ({
     todos: [],
     newTodo: '',
 
-    setNewTodo: (value) => set({ newTodo: value }),
+    getNewTodo: (value) => set({ newTodo: value }),
 
     addTodo: (event) => 
         event.preventDefault() ||
@@ -17,7 +17,7 @@ const useTodoStore = create((set) => ({
                 return state.todos;
             }
             else {
-                alert('Please enter a todo');
+                alert('Please enter a Todo');
                 return state;
             }
         }),
@@ -26,7 +26,7 @@ const useTodoStore = create((set) => ({
 
     toggleTodo: (id) => set((state) => ({ todos: state.todos.map((todo) => todo.id === id ? { ...todo, completed: !todo.completed } : todo) })),
 
-    editTodo: (id) => set((state) => ({ todos: state.todos.map((todo) => todo.id === id ? { ...todo, text: prompt('Edit Todo', "New Todo")} : todo) }))
+    editTodo: (id) => set((state) => ({ todos: state.todos.map((todo) => todo.id === id ? { ...todo, text: prompt('Edit Todo:', "New Todo")} : todo) }))
 }));
 
 export default useTodoStore;
