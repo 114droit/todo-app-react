@@ -14,13 +14,13 @@ const useTodoStore = create((set) => ({
                     todos: [...state.todos, { id: state.todos.length + 1, text: state.newTodo, completed: false }],
                     newTodo: ''
                 });
-                return todos;
+                return state.todos;
             }
             else {
                 alert('Please enter a todo');
                 return state;
             }
-    }),
+        }),
 
     deleteTodo: (id) => set((state) => ({ todos: state.todos.filter((todo) => todo.id !== id) })),
 
